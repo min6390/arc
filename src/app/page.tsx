@@ -1,103 +1,149 @@
+import Banner from "@/components/Banner";
+import Categories from "@/components/Categories";
+import List from "@/components/List";
+import ProductItem from "@/features/product/ProductItem";
+import React from "react";
+import {Button} from "@/components/ui/button";
 import Image from "next/image";
 
-export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+const banners = [
+    'https://2tmobile.com/wp-content/uploads/2025/09/banner-iphone-17-pro-t9-2tmobile.webp',
+    "https://2tmobile.com/wp-content/uploads/2025/09/banner-iphone-17-air-t9-25-2tmobile.webp",
+    "https://2tmobile.com/wp-content/uploads/2025/05/banner-laptop-t5-25-2tmobile-2048x812.webp",
+    "https://2tmobile.com/wp-content/uploads/2025/03/banner-ipad-gen-11-t3-2tmobile.webp",
+    'https://cdnv2.tgdd.vn/mwg-static/dmx/Banner/a1/8a/a18aa930d483ca05665219353a61caac.png',
+    'https://cdnv2.tgdd.vn/mwg-static/dmx/Banner/fa/97/fa97498308c9e58905faa0e61afeb2df.png'
+]
+
+
+ const data = [
+    {
+        id: 1,
+        name: "Hoshizaki KM-231BAJ Ice Machine",
+        image: "https://arcrestaurantequipment.com/wp-content/uploads/2022/09/KM-231BAJ-scaled-1-300x300.jpg",
+        price: 3890,
+        discountPrice: 3490,
+        rating: 4.8,
+        sold: 125,
+        badges: [
+            { type: "new", label: "Sản phẩm mới" },
+            { type: "installment", label: "Trả góp 0 đồng" },
+        ],
+    },
+    {
+        id: 2,
+        name: "Hoshizaki KM-161BAJ Ice Maker",
+        image: "https://arcrestaurantequipment.com/wp-content/uploads/2022/09/KM-161BAJ-scaled-1-300x300.jpg",
+        price: 3290,
+        discountPrice: 2990,
+        rating: 4.6,
+        sold: 210,
+        badges: [
+            { type: "installment", label: "Trả góp 0 đồng" },
+            { type: "discount", label: "Giảm giá" },
+        ],
+    },
+    {
+        id: 3,
+        name: "Hoshizaki DKM-500BAJ Cube Ice Machine",
+        image: "https://arcrestaurantequipment.com/wp-content/uploads/2022/09/DKM-500BAJ-scaled-1-300x300.jpg",
+        price: 5790,
+        discountPrice: 5190,
+        rating: 4.9,
+        sold: 320,
+        badges: [
+            { type: "new", label: "Sản phẩm mới" },
+            { type: "bestseller", label: "Bán chạy" },
+        ],
+    },
+    {
+        id: 4,
+        name: "Hoshizaki KM-420MWJ Ice Maker",
+        image: "https://arcrestaurantequipment.com/wp-content/uploads/2022/10/KM-420MWJ-scaled-1-300x300.jpg",
+        price: 4890,
+        discountPrice: 4590,
+        rating: 4.7,
+        sold: 185,
+        badges: [
+            { type: "installment", label: "Trả góp 0 đồng" },
+            { type: "discount", label: "Giảm giá" },
+        ],
+    },
+    {
+        id: 5,
+        name: "Polar Chest Freezer PCPC-1BR",
+        image: "https://arcrestaurantequipment.com/wp-content/uploads/2023/07/pcpc-1br_1.jpg",
+        price: 1590,
+        discountPrice: 1390,
+        rating: 4.4,
+        sold: 98,
+        badges: [{ type: "new", label: "Sản phẩm mới" }],
+    },
+    {
+        id: 6,
+        name: "Polar Chest Freezer PCPC-1BL",
+        image: "https://arcrestaurantequipment.com/wp-content/uploads/2023/07/pcpc-1bl_1.jpg",
+        price: 1590,
+        discountPrice: 1390,
+        rating: 4.5,
+        sold: 1342,
+        badges: [{ type: "installment", label: "Trả góp 0 đồng" }],
+    },
+    {
+        id: 7,
+        name: "Polar Upright Freezer PLBL240C",
+        image: "https://arcrestaurantequipment.com/wp-content/uploads/2023/07/plbl240c.jpg",
+        price: 2190,
+        discountPrice: 1990,
+        rating: 4.6,
+        sold: 2870,
+        badges: [{ type: "bestseller", label: "Bán chạy" }],
+    },
+];
+
+const companies = [
+    'https://arcrestaurantequipment.com/wp-content/uploads/2022/12/Atosa.jpg',
+    'https://arcrestaurantequipment.com/wp-content/uploads/2022/12/Cambro-Logo.png',
+    'https://arcrestaurantequipment.com/wp-content/uploads/2022/12/Dukers-Logo.png',
+    'https://arcrestaurantequipment.com/wp-content/uploads/2022/12/Hoshizaki.png',
+    'https://arcrestaurantequipment.com/wp-content/uploads/2022/12/Migali.png',
+    'https://arcrestaurantequipment.com/wp-content/uploads/2022/12/robot-coupe-vector-logo.png'
+]
+
+export default function HomePage() {
+    const items = Array.from({ length: 50 }, (_, i) => `Item ${i + 1}`);
+
+
+    const renderItem = (item:IProduct,index:number)=><ProductItem key={index} item={item}/>
+    const renderFilter = (item: string) => {
+        return (
+            <button className="relative w-15 h-10 overflow-hidden rounded-md bg-gray-100 cursor-pointer hover:border border-primary">
+                <Image
+                    src={item}
+                    alt="filter"
+                    fill
+                    className="object-contain"
+                />
+            </button>
+        )
+    }
+
+    return (
+        <>
+            <main className="container mx-auto py-8 px-4">
+                <Banner banners={banners}/>
+                <ul className={'bg-white py-10 px-5 my-10 rounded-md'}>
+                    <div className={'gap-5 flex flex-row mb-5'}>
+                        <button className="relative w-15 h-10 overflow-hidden rounded-md border border-primary  cursor-pointer hover:bg-blue-100">
+                            <span className={'text-sm'}>Filter</span>
+                        </button>
+                        {companies.map(renderFilter)}
+                    </div>
+                    <List columns={5} data={[...data,...data,...data]} renderItem={renderItem }/>
+                </ul>
+            </main>
+        </>
+
+    );
 }
